@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Weight Converter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <style>
+        body {
+            margin-top: 70px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="display-4 text-center mb-3">Weight Converter</h1>
+                <form>
+                    <div class="form-group">
+                        <input id="lbsInput"
+                            type="number" 
+                            class="form-control form-control-lg" 
+                            placeholder="Enter pounds..." >
+                    </div>
+                </form>
+                <div id="output">
+
+                    <div class="card card-primary mb-2">
+                        <div class="card-block">
+                            <h4>Grams:</h4>
+                            <div id="gramsOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-success mb-2">
+                        <div class="card-block">
+                            <h4>Kilograms:</h4>
+                            <div id="kgOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-danger mb-2">
+                        <div class="card-block">
+                            <h4>Ounces:</h4>
+                            <div id="ozOutput"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const output = document.getElementById('output');
+        const imputFiled = document.getElementById('lbsInput');
+        
+        // makes output fields hidden onPageLoad
+        output.style.visibility = 'hidden';
+
+        const convert = (e) => {
+            output.style.visibility = 'visible';
+            const pounds = e.target.value;
+
+            document.getElementById('gramsOutput').textContent = (pounds/0.0022046).toFixed(2);
+            document.getElementById('kgOutput').textContent = (pounds/2.2046).toFixed(2);
+            document.getElementById('ozOutput').textContent = (pounds/16).toFixed(2);
+        }
+
+        imputFiled.addEventListener('input', convert);
+
+    </script>
+</body>
+</html>
